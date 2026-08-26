@@ -1,5 +1,4 @@
-CS372 Documents
-==================================
+# CS372Lab.Hatcher
 Due: Tue Aug 25,2026 at 11:59PM
 Assignment: Timing the Towers of Hanoi
 Introductio
