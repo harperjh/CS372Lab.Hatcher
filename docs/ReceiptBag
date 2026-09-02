@@ -1,0 +1,13 @@
+Bag with receipt 
+This project involves implementing a `ReceiptBag` program in C++. 
+The `ReceiptBag` stores data items and assigns a unique receipt number 
+to each, allowing for the subsequent removal of specific items.The program 
+supports various data types (such as numbers and strings) and utilizes a `vector` 
+container to store the data items alongside their corresponding receipt numbers.Key 
+functionalities include `insert()`, `remove()`, `contains()`, `size()`, and `isEmpty()`. 
+The `insert()` function adds items and assigns receipt numbers, while the `remove()` function 
+deletes items based on their receipt numbers, raising an error if an invalid number is provided.Additionally,
+I developed several test cases to verify the program's correctness. These tests cover ensuring receipt number uniqueness,
+correctly removing items, triggering error messages for invalid numbers, and accurately calculating the container size.In summary,
+this project demonstrates the application of C++ classes, templates, `vector` containers, and testing methodologies. The `ReceiptBag` program 
+successfully stores data items and enables effective management through the use of receipt numbers.
