@@ -1,0 +1,16 @@
+// List, Bag, and CircularList Report
+Creating a List
+
+For this assignment, I created a List template class using a doubly linked list with head and tail pointers. The lecture version had incomplete copy move members, so I fixed the rule of five: copy constructor and copy assignment deep-copy the nodes, move constructor and move assignment just steal the pointers and leave the other list empty. I also added a self-assignment check and a size() method.
+
+ Refactoring Bag to Use a List
+
+I swapped Bag's backing store from std::vector to my List. insert() calls push_back(), and pop() calls back()/pop_back().
+
+This works for Bag because it never needs to access items by position — just add, remove, count, or scan everything once, which a list handles fine. It would not work for something like ReceiptBag, since receipts are usually looked up by position, which needs a vector's constant-time operator[]. A linked list would have to walk from the front each time.
+
+Building a CircularList
+
+CircularList inherits from list. Traversal wraps from the tail back to the head instead of stopping, and takes a starting index so it knows when to stop (once it gets back to where it started). No index defaults to starting at the front, matching normal list traversal.
+
+The only base class change needed was making Node, head, and tail protected instead of private, so Circular List could walk the nodes. Everything else (push/pop, copy/move) is inherited unchanged.
