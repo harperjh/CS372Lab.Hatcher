@@ -5,37 +5,39 @@
 template <typename Thing>
 class Bag {
 public:
-	// Add an item to the bag.
-	void insert(Thing aThing) {
-		bagContents.push_back(aThing);
-	}
-	// Remove and return an item from the bag.
-	// return a reference to something that's about to be popped.
-	Thing &pop() {
-		Thing &aThing = *(new Thing());
-		if (!bagContents.empty()) {
-			aThing = bagContents.back();
-			bagContents.pop_back();
-		}
-		else {
-			std::cerr << "Can't pop out of an empty bag" << std::endl;
-		}
-		return aThing;
-	}
-	// Number of items currently in the bag.
-	int size() {
-		return static_cast<int>(bagContents.size());
-	}
-	// Count how many times aThing appears in the bag.
-	int count(Thing aThing) {
-		int bagCount = 0;
-		bagContents.traverse([&](Thing &item) {
-			if (item == aThing) {
-				bagCount++;
-			}
-		});
-		return bagCount;
-	}
+// Add an item to the bag.
+void insert(Thing aThing) {
+bagContents.push_back(aThing);
+}
+// Remove and return an item from the bag.
+// Returned by value: the old version returned a reference to an object
+// made with `new Thing()` that was never deleted, leaking one object per
+// call. Returning a copy needs no heap allocation at all.
+Thing pop() {
+Thing aThing{};
+if (!bagContents.empty()) {
+aThing = bagContents.back();
+bagContents.pop_back();
+}
+else {
+std::cerr << "Can't pop out of an empty bag" << std::endl;
+}
+return aThing;
+}
+// Number of items currently in the bag.
+int size() {
+return static_cast<int>(bagContents.size());
+}
+// Count how many times aThing appears in the bag.
+int count(Thing aThing) {
+int bagCount = 0;
+bagContents.traverse([&](Thing &item) {
+if (item == aThing) {
+bagCount++;
+}
+});
+return bagCount;
+}
 private:
-	List<Thing> bagContents; // backing store: a doubly linked
+List<Thing> bagContents; // backing store: a doubly linked list
 };
