@@ -1,8 +1,3 @@
-//
-// File:    Tree.h
-// Author:  Adam.Lewis@athens.edu
-//          (parent pointers and AI-review fixes added for the CS 372 lab;
-//           see docs/Tree_AI_Review.md)
 // Purpose:
 // Use C++ templates, STL classes and functions, and smart pointers to
 // implement a binary search tree.
